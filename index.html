@@ -11,7 +11,6 @@
 <link rel="preload" as="image" href="capa.jpg" fetchpriority="high">
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Anton&family=Poppins:wght@400;500;700&family=Instrument+Serif:ital@0;1&display=swap">
 <script>try{history.scrollRestoration='manual'}catch(e){}</script>
-<script defer src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2.45.4/dist/umd/supabase.min.js"></script>
 <style>
 /* Layout: dark poster-like phone page. Hero photo card with a giant "PORTFÓLIO" fitted to the card width, a moving service strip, then one tab at a time (fixed bottom bar on phone, sticky pill bar on desktop). */
 :root{
@@ -71,7 +70,7 @@ a{color:inherit}
 @keyframes marquee{to{transform:translateX(-50%)}}
 
 /* Abas */
-.tabs{position:fixed;left:0;right:0;bottom:0;z-index:30;display:grid;grid-template-columns:repeat(5,1fr);gap:2px;padding:6px 6px calc(6px + env(safe-area-inset-bottom,0px));background:rgba(11,11,13,.88);backdrop-filter:blur(16px);-webkit-backdrop-filter:blur(16px);border-top:1px solid var(--line)}
+.tabs{position:fixed;left:0;right:0;bottom:0;z-index:30;display:grid;grid-template-columns:repeat(4,1fr);gap:2px;padding:6px 6px calc(6px + env(safe-area-inset-bottom,0px));background:rgba(11,11,13,.88);backdrop-filter:blur(16px);-webkit-backdrop-filter:blur(16px);border-top:1px solid var(--line)}
 .tab{appearance:none;border:0;background:none;color:var(--muted);cursor:pointer;display:flex;flex-direction:column;align-items:center;gap:4px;padding:8px 0;border-radius:14px;font:500 10.5px/1.1 var(--body);transition:color .2s,background .25s var(--ease),transform .15s}
 .tab:active{transform:scale(.94)}
 .tab svg{width:22px;height:22px;stroke:currentColor;fill:none;stroke-width:1.8;stroke-linecap:round;stroke-linejoin:round}
@@ -137,40 +136,6 @@ main{padding-block:28px calc(var(--nav) + 40px + env(safe-area-inset-bottom,0px)
 .vid .play svg{width:11px;height:11px;fill:#0B0B0D;margin-left:2px}
 .note{color:var(--muted);font-size:12.5px;margin-top:14px}
 
-/* Feedbacks */
-.addFb{appearance:none;width:100%;display:flex;align-items:center;justify-content:center;gap:10px;padding:16px;border-radius:16px;border:1px solid var(--line);background:var(--surface);color:var(--ink);font:700 16px var(--body);cursor:pointer;transition:border-color .2s,transform .15s}
-.addFb span{width:28px;height:28px;border-radius:50%;background:var(--ink);color:var(--bg);display:grid;place-items:center;font-size:18px;line-height:1;transition:transform .3s var(--ease)}
-.addFb[aria-expanded="true"] span{transform:rotate(45deg)}
-.addFb:hover{border-color:var(--muted)}.addFb:active{transform:scale(.98)}
-.fbForm{margin-top:12px;animation:panelIn .35s var(--ease) both}
-.stars{display:flex;gap:4px}
-.stars button{appearance:none;border:0;background:none;padding:2px;font-size:34px;line-height:1;color:var(--line);cursor:pointer;transition:color .15s,transform .15s}
-.stars button.on{color:#FFC94D}
-.stars button:active{transform:scale(1.2)}
-.thumbs{display:grid;grid-template-columns:repeat(4,1fr);gap:8px}
-.thumbs:empty{display:none}
-.thumb{position:relative;aspect-ratio:1;border-radius:12px;overflow:hidden;background:var(--raise)}
-.thumb img{width:100%;height:100%;object-fit:cover}
-.thumb button{position:absolute;top:4px;right:4px;width:24px;height:24px;border-radius:50%;border:0;background:rgba(0,0,0,.7);color:#fff;font-size:13px;cursor:pointer}
-.pick{display:inline-flex;align-items:center;gap:8px;justify-self:start;padding:10px 14px;border-radius:999px;border:1px dashed var(--muted);color:var(--ink);font-size:14px;cursor:pointer}
-.sendFb{border:0;cursor:pointer;background:var(--ink);color:var(--bg)}
-.sendFb:disabled{opacity:.6;cursor:wait}
-.fbMsg{font-size:14px;min-height:1em}
-.fbMsg.ok{color:var(--wa)}.fbMsg.err{color:#FF7A7A}
-.fbList{display:grid;gap:12px;margin-top:20px}
-@media (min-width:760px){.fbList{grid-template-columns:repeat(2,1fr);align-items:start}}
-.fb{background:var(--surface);border:1px solid var(--line);border-radius:var(--r);padding:18px;display:grid;gap:12px}
-.fb .rate{color:#FFC94D;letter-spacing:2px;font-size:16px}
-.fb .rate i{font-style:normal;color:var(--line)}
-.fb blockquote{margin:0;font-size:15px;white-space:pre-line;overflow-wrap:anywhere}
-.fb .pics{display:grid;grid-template-columns:repeat(4,1fr);gap:6px}
-.fb .pics button{appearance:none;border:0;padding:0;aspect-ratio:1;border-radius:10px;overflow:hidden;background:var(--raise);cursor:zoom-in}
-.fb .pics img{width:100%;height:100%;object-fit:cover}
-.fb footer{margin:0;text-align:left;display:flex;justify-content:space-between;gap:8px;font-size:14px;color:var(--ink)}
-.fb footer b{font-weight:700}.fb footer small{color:var(--muted);font-size:12.5px}
-.empty{color:var(--muted);font-size:14px;text-align:center;padding:24px 0}
-.lightbox{position:fixed;inset:0;z-index:60;background:rgba(0,0,0,.94);display:grid;place-items:center;padding:56px 12px 16px;cursor:zoom-out}
-.lightbox img{max-width:100%;max-height:100%;border-radius:12px;object-fit:contain}
 
 /* Orçamento */
 .form{display:grid;gap:20px;background:var(--surface);border:1px solid var(--line);border-radius:var(--r);padding:18px}
@@ -256,8 +221,6 @@ footer{color:var(--muted);font-size:12.5px;text-align:center;margin-top:40px}
       <svg viewBox="0 0 24 24"><rect x="3" y="3" width="7" height="7" rx="1.5"/><rect x="14" y="3" width="7" height="7" rx="1.5"/><rect x="3" y="14" width="7" height="7" rx="1.5"/><rect x="14" y="14" width="7" height="7" rx="1.5"/></svg>Social media</button>
     <button class="tab" role="tab" id="t-audiovisual" data-tab="audiovisual" aria-controls="audiovisual">
       <svg viewBox="0 0 24 24"><rect x="2.5" y="6" width="13" height="12" rx="2.5"/><path d="m15.5 10 6-3.5v11l-6-3.5"/></svg>Audiovisual</button>
-    <button class="tab" role="tab" id="t-feedbacks" data-tab="feedbacks" aria-controls="feedbacks">
-      <svg viewBox="0 0 24 24"><path d="M4 5h16v11H9l-5 4z"/><path d="M8 10h8M8 13h5"/></svg>Feedbacks</button>
     <button class="tab" role="tab" id="t-orcamento" data-tab="orcamento" aria-controls="orcamento">
       <svg viewBox="0 0 24 24"><path d="M14 3H6a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V9z"/><path d="M14 3v6h6M8 13h8M8 17h5"/></svg>Orçamento</button>
     <button class="tab" role="tab" id="t-sobre" data-tab="sobre" aria-controls="sobre">
@@ -279,30 +242,6 @@ footer{color:var(--muted);font-size:12.5px;text-align:center;margin-top:40px}
       <a class="behance reveal" href="https://www.behance.net/gallery/256048635/PORTFOLIO-AUDIOVISUAL" target="_blank" rel="noopener">
         <div><b>mais vídeos</b><small>Portfólio audiovisual completo no Behance</small></div><span class="arrow">↗</span>
       </a>
-    </section>
-
-    <section class="panel" id="feedbacks" role="tabpanel" aria-labelledby="t-feedbacks" hidden>
-      <div class="head"><div><h2>Feedbacks</h2></div></div>
-      <button class="addFb" id="addFb" type="button" aria-expanded="false" aria-controls="fbForm"><span>＋</span>Adicionar feedback</button>
-
-      <form class="form fbForm" id="fbForm" hidden novalidate>
-        <div class="field"><span class="legend" id="notaLbl">Sua avaliação</span>
-          <div class="stars" id="stars" role="radiogroup" aria-labelledby="notaLbl">
-            <button type="button" role="radio" data-n="1" aria-label="1 estrela">★</button><button type="button" role="radio" data-n="2" aria-label="2 estrelas">★</button><button type="button" role="radio" data-n="3" aria-label="3 estrelas">★</button><button type="button" role="radio" data-n="4" aria-label="4 estrelas">★</button><button type="button" role="radio" data-n="5" aria-label="5 estrelas">★</button>
-          </div></div>
-        <div class="field"><label for="fbNome">Seu nome</label><input type="text" id="fbNome" maxlength="80" autocomplete="name" placeholder="Ex.: Ana Souza"></div>
-        <div class="field"><label for="fbEmpresa">Empresa ou @ (opcional)</label><input type="text" id="fbEmpresa" maxlength="80" placeholder="Ex.: @barbeariadoze"></div>
-        <div class="field"><label for="fbTexto">Depoimento</label><textarea id="fbTexto" maxlength="1000" placeholder="Como foi trabalhar com a Cleam Digital?"></textarea></div>
-        <div class="field"><span class="legend">Imagens (até 4, opcional)</span>
-          <div class="thumbs" id="thumbs"></div>
-          <label class="pick" for="fbFotos"><span>＋</span> Escolher imagens</label>
-          <input type="file" id="fbFotos" accept="image/jpeg,image/png,image/webp" multiple hidden>
-        </div>
-        <button class="send sendFb" type="submit" id="fbSend">Enviar feedback</button>
-        <p class="fbMsg" id="fbMsg" role="status" aria-live="polite"></p>
-      </form>
-
-      <div class="fbList" id="fbList"><p class="empty">Carregando feedbacks…</p></div>
     </section>
 
     <section class="panel" id="orcamento" role="tabpanel" aria-labelledby="t-orcamento" hidden>
@@ -442,60 +381,6 @@ function observe(el){if(io)io.observe(el);else el.classList.add('in');}
 document.querySelectorAll('.reveal').forEach(observe);
 
 show('social',false);
-
-/* Feedbacks: salvos no Supabase (projeto cleam-digital). Só aparecem depois de aprovados. */
-const SB_URL="https://shiycjwcslftlukmdvtr.supabase.co", SB_KEY="sb_publishable_dfP8h_aXLwRRtDG8i-RC0g_J4NR-9nX";
-let sb=null, nota=0, fotos=[];
-const fbList=document.getElementById('fbList'), fbForm=document.getElementById('fbForm'), addFb=document.getElementById('addFb'), fbMsg=document.getElementById('fbMsg');
-function esc(s){return String(s??'').replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]))}
-function fotoUrl(path){return SB_URL+'/storage/v1/object/public/feedbacks/'+path.split('/').map(encodeURIComponent).join('/')}
-async function carregarFeedbacks(){
-  if(!sb){fbList.innerHTML='<p class="empty">Não foi possível carregar os feedbacks agora.</p>';return}
-  const {data,error}=await sb.from('feedbacks').select('id,created_at,nome,empresa,nota,depoimento,fotos').order('created_at',{ascending:false}).limit(60);
-  if(error){fbList.innerHTML='<p class="empty">Não foi possível carregar os feedbacks agora.</p>';return}
-  if(!data.length){fbList.innerHTML='<p class="empty">Ainda não há feedbacks publicados. Seja o primeiro a avaliar!</p>';return}
-  fbList.innerHTML=data.map(f=>{
-    const d=new Date(f.created_at).toLocaleDateString('pt-BR',{month:'short',year:'numeric'});
-    const pics=(f.fotos||[]).length?'<div class="pics">'+f.fotos.map(p=>'<button type="button" data-full="'+esc(fotoUrl(p))+'"><img loading="lazy" alt="Imagem do feedback" src="'+esc(fotoUrl(p))+'"></button>').join('')+'</div>':'';
-    return '<article class="fb reveal"><div class="rate" aria-label="'+f.nota+' de 5 estrelas">'+'★'.repeat(f.nota)+'<i>'+'★'.repeat(5-f.nota)+'</i></div><blockquote>'+esc(f.depoimento)+'</blockquote>'+pics+'<footer><div><b>'+esc(f.nome)+'</b>'+(f.empresa?'<br><small>'+esc(f.empresa)+'</small>':'')+'</div><small>'+d+'</small></footer></article>';
-  }).join('');
-  fbList.querySelectorAll('.reveal').forEach(observe);
-}
-fbList.addEventListener('click',e=>{const b=e.target.closest('[data-full]');if(!b)return;const lb=document.createElement('div');lb.className='lightbox';lb.innerHTML='<img alt="">';lb.querySelector('img').src=b.dataset.full;lb.onclick=()=>{lb.remove();document.body.style.overflow=''};document.body.appendChild(lb);document.body.style.overflow='hidden'});
-
-addFb.addEventListener('click',()=>{const open=fbForm.hidden;fbForm.hidden=!open;addFb.setAttribute('aria-expanded',String(open));if(open)document.getElementById('fbNome').focus({preventScroll:true});});
-document.querySelectorAll('#stars button').forEach(b=>b.addEventListener('click',()=>{nota=+b.dataset.n;document.querySelectorAll('#stars button').forEach(x=>{const on=+x.dataset.n<=nota;x.classList.toggle('on',on);x.setAttribute('aria-checked',String(+x.dataset.n===nota))});}));
-
-function reduzir(file){return new Promise((res,rej)=>{const img=new Image();img.onload=()=>{const m=1600,s=Math.min(1,m/Math.max(img.width,img.height));const c=document.createElement('canvas');c.width=Math.round(img.width*s);c.height=Math.round(img.height*s);c.getContext('2d').drawImage(img,0,0,c.width,c.height);c.toBlob(b=>b?res(b):rej(),'image/jpeg',.85);URL.revokeObjectURL(img.src)};img.onerror=rej;img.src=URL.createObjectURL(file)})}
-function desenharThumbs(){const t=document.getElementById('thumbs');t.innerHTML='';fotos.forEach((f,i)=>{const d=document.createElement('div');d.className='thumb';d.innerHTML='<img alt=""><button type="button" aria-label="Remover imagem">✕</button>';d.querySelector('img').src=f.url;d.querySelector('button').onclick=()=>{URL.revokeObjectURL(f.url);fotos.splice(i,1);desenharThumbs()};t.appendChild(d)});document.querySelector('.pick').hidden=fotos.length>=4;}
-document.getElementById('fbFotos').addEventListener('change',e=>{for(const f of e.target.files){if(fotos.length>=4)break;if(!/^image\//.test(f.type))continue;fotos.push({file:f,url:URL.createObjectURL(f)})}e.target.value='';desenharThumbs();});
-
-fbForm.addEventListener('submit',async e=>{
-  e.preventDefault();
-  const nome=document.getElementById('fbNome').value.trim(), empresa=document.getElementById('fbEmpresa').value.trim(), texto=document.getElementById('fbTexto').value.trim();
-  fbMsg.className='fbMsg';
-  if(!nota){fbMsg.textContent='Escolha de 1 a 5 estrelas.';fbMsg.classList.add('err');return}
-  if(!nome){fbMsg.textContent='Escreva seu nome.';fbMsg.classList.add('err');return}
-  if(texto.length<3){fbMsg.textContent='Escreva seu depoimento.';fbMsg.classList.add('err');return}
-  if(!sb){fbMsg.textContent='Sem conexão com o servidor agora. Tente de novo em instantes.';fbMsg.classList.add('err');return}
-  const btn=document.getElementById('fbSend');btn.disabled=true;btn.textContent='Enviando…';fbMsg.textContent='';
-  try{
-    const caminhos=[];
-    for(const f of fotos){
-      const blob=await reduzir(f.file).catch(()=>f.file);
-      const path='envios/'+(crypto.randomUUID?crypto.randomUUID():Date.now()+'-'+Math.random().toString(36).slice(2))+'.jpg';
-      const {error}=await sb.storage.from('feedbacks').upload(path,blob,{contentType:'image/jpeg',upsert:false});
-      if(error)throw error;caminhos.push(path);
-    }
-    const {error}=await sb.from('feedbacks').insert({nome,empresa:empresa||null,nota,depoimento:texto,fotos:caminhos});
-    if(error)throw error;
-    fbForm.reset();fotos.forEach(f=>URL.revokeObjectURL(f.url));fotos=[];desenharThumbs();nota=0;document.querySelectorAll('#stars button').forEach(x=>{x.classList.remove('on');x.setAttribute('aria-checked','false')});
-    fbMsg.textContent='Obrigado! Seu feedback foi enviado e vai aparecer aqui depois de aprovado.';fbMsg.classList.add('ok');
-  }catch(err){
-    fbMsg.textContent='Não foi possível enviar. Confira sua internet e tente de novo.';fbMsg.classList.add('err');
-  }finally{btn.disabled=false;btn.textContent='Enviar feedback';}
-});
-addEventListener('DOMContentLoaded',()=>{try{if(window.supabase)sb=window.supabase.createClient(SB_URL,SB_KEY,{auth:{persistSession:false}})}catch(e){}carregarFeedbacks();});
 
 /* Orçamento → WhatsApp */
 const $=id=>document.getElementById(id);
