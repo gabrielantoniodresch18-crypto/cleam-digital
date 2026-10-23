@@ -121,9 +121,13 @@ main{padding-block:28px calc(var(--nav) + 40px + env(safe-area-inset-bottom,0px)
 
 /* Audiovisual */
 .videos{display:grid;grid-template-columns:repeat(2,1fr);gap:10px}
-@media (min-width:760px){.videos{grid-template-columns:repeat(4,1fr);gap:14px}}
+@media (min-width:760px){.videos{grid-template-columns:repeat(5,1fr);gap:14px}}
+/* Vídeos deitados: um embaixo do outro no celular; no computador o primeiro ocupa a linha toda e os outros ficam lado a lado */
+.videosWide{display:grid;grid-template-columns:1fr;gap:10px;margin-top:10px}
+.videosWide:empty{display:none}
+@media (min-width:760px){.videosWide{grid-template-columns:repeat(2,1fr);gap:14px;margin-top:14px}.videosWide .vid:first-child{grid-column:1/-1}}
 .vid{position:relative;aspect-ratio:9/16;border-radius:18px;overflow:hidden;background:var(--raise);color:#fff}
-.vid.wide{grid-column:1/-1;aspect-ratio:16/9}
+.vid.wide{aspect-ratio:16/9}
 .vid iframe{position:absolute;inset:0;width:100%;height:100%;border:0}
 .vid img,.vid video{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;transition:transform .6s var(--ease)}
 .vid video{object-fit:contain;background:#000}
@@ -239,6 +243,7 @@ footer{color:var(--muted);font-size:12.5px;text-align:center;margin-top:40px}
     <section class="panel" id="audiovisual" role="tabpanel" aria-labelledby="t-audiovisual" hidden>
       <div class="head"><div><h2>Audiovisual</h2></div></div>
       <div class="videos" id="videos"></div>
+      <div class="videosWide" id="videosWide"></div>
       <a class="behance reveal" href="https://www.behance.net/gallery/256048635/PORTFOLIO-AUDIOVISUAL" target="_blank" rel="noopener">
         <div><b>mais vídeos</b><small>Portfólio audiovisual completo no Behance</small></div><span class="arrow">↗</span>
       </a>
@@ -354,13 +359,13 @@ addEventListener('keydown',e=>{if(e.key==='Escape')closeProj();});
 
 /* Audiovisual: vídeos do projeto "Portfólio audiovisual" no Behance, no player do próprio Behance (melhor qualidade disponível).
    Para adicionar um vídeo, copie o código do vídeo no Behance. ":wide" = vídeo horizontal. */
-const VIDEOS=["HeY5pCcyDNL","Q-ZH4BoQVsF","ECrN5GSaZHV","74yHF-ze58C","-h3F-M8ngWf","NTx_vqz6PQW","CsLEkLxaxBU","7B8AQa2oZXi:wide"];
-const vg=document.getElementById('videos');let videosLoaded=false;
+const VIDEOS=["HeY5pCcyDNL","Q-ZH4BoQVsF","ECrN5GSaZHV","74yHF-ze58C","-h3F-M8ngWf","NTx_vqz6PQW","CsLEkLxaxBU","8s9WU8qLr-q","3-JZK5dqahL","CXhEL4e2UEr","7B8AQa2oZXi:wide","6VPJB9wNZKR:wide","WRiAG5uoKmp:wide"];
+const vg=document.getElementById('videos'),vw=document.getElementById('videosWide');let videosLoaded=false;
 function loadVideos(){
   if(videosLoaded)return;videosLoaded=true;
   VIDEOS.forEach((v,n)=>{const [id,kind]=v.split(':');const d=document.createElement('div');d.className='vid reveal'+(kind?' '+kind:'');d.style.transitionDelay=(n%3)*70+'ms';
     const f=document.createElement('iframe');f.src='https://www-ccv.adobe.io/v1/player/ccv/'+id+'/embed?bgcolor=%231E1E22&api_key=behance1';f.title='Vídeo '+(n+1);f.loading='lazy';f.allow='autoplay; fullscreen; picture-in-picture';f.allowFullscreen=true;
-    d.appendChild(f);vg.appendChild(d);observe(d);});
+    d.appendChild(f);(kind==='wide'?vw:vg).appendChild(d);observe(d);});
 }
 
 /* Abas */
