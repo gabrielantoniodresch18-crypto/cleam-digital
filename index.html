@@ -117,6 +117,8 @@ main{padding-block:28px calc(var(--nav) + 40px + env(safe-area-inset-bottom,0px)
 .sheetBar h3{flex:1;min-width:0;font-size:26px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
 .sheetBar button{flex:none;width:42px;height:42px;border-radius:50%;border:0;background:var(--raise);color:var(--ink);font-size:20px;cursor:pointer}
 .sheetBody{max-width:900px;margin:0 auto;padding:16px 16px calc(32px + env(safe-area-inset-bottom,0px));display:grid;gap:8px}
+.sheetVid{position:relative;width:100%;max-width:420px;justify-self:center;aspect-ratio:9/16;border-radius:10px;overflow:hidden;background:var(--raise)}
+.sheetVid iframe{position:absolute;inset:0;width:100%;height:100%;border:0}
 .sheetBody img{width:100%;height:auto;border-radius:10px;background:var(--raise)}
 
 /* Audiovisual */
@@ -323,6 +325,7 @@ fitAll();(document.fonts&&document.fonts.ready||Promise.resolve()).then(fitAll);
 /* Projetos do Behance (behance.net/gabrieldresch1). Para adicionar um projeto novo, copie uma linha e troque os dados. */
 const BH="https://www.behance.net/gallery/", BC="https://mir-s3-cdn-cf.behance.net/projects/808/", BM="https://mir-s3-cdn-cf.behance.net/project_modules/";
 const PROJETOS=[
+  {id:"257793221/SOCIAL-MEDIA-IMOBILIARIA",t:"Social media · Imobiliária",c:"75e7c7257793221.6ae391d1533d5.jpg",i:["v:GLW4_gmJnV4","max_1200_webp/387f42257793221.6ae391dbc08a6.jpg","max_1200_webp/bea101257793221.6ae391dbc0dd0.jpg","max_1200_webp/52fd49257793221.6ae391dbc1750.jpg","max_1200_webp/331b8b257793221.6ae391dbc033e.jpg","max_1200_webp/c78dae257793221.6ae391dbc1c5e.jpg","v:5UH7Hxdrwhp","max_1200_webp/5b40b8257793221.6ae391dbbfe09.jpg","max_1200_webp/83d78d257793221.6ae391dbc213a.jpg","max_1200_webp/b16229257793221.6ae391dbc1298.png"]},
   {id:"254802279/Social-media-Genesis-barbearia",t:"Social media · Genesis Barbearia",c:"28bc8f254802279.6a8de3dee735f.jpg",i:["max_1200_webp/3f445c254802279.6a8de3c0e49dc.png","max_1200_webp/5e1999254802279.6a8de3c0e5367.jpg","max_1200_webp/21bbf5254802279.6a8de3c0e5cf7.jpg","1400_webp/09fb43254802279.6a8de3c0e5044.jpg","max_1200_webp/9a6f41254802279.6a8de3c0e46f4.jpg","max_1200_webp/89db11254802279.6a8de3c0e6094.jpg","max_1200_webp/386f2e254802279.6a8de3c0e63e8.jpg","max_1200_webp/e8bbcf254802279.6a8de3c0e3c86.jpg","max_1200_webp/9e3ef1254802279.6a8de3c0e5947.jpg","max_1200_webp/95cf1e254802279.6a8de3c0e560f.jpg","max_1200_webp/d5e8d7254802279.6a8de3c0e4cf5.jpg","max_1200_webp/1976e6254802279.6a8de3c0e4073.jpg","max_1200_webp/801ff5254802279.6a8de3c0e4427.jpg"]},
   {id:"253743243/SOCIAL-MEDIA-CHOPP",t:"Social media · Chopp",c:"de112c253743243.6a7129f404899.jpg",i:["max_1200_webp/d848fb253743243.6a7129f48d3cd.jpg","max_1200_webp/65f0c8253743243.6a7129f48d036.jpg","max_1200_webp/d5c7f2253743243.6a7129f48ccea.jpg","max_1200_webp/0883e4253743243.6a7129f48deb4.jpg","max_1200_webp/aa9712253743243.6a7129f48c271.jpg","max_1200_webp/224583253743243.6a7129f48be5f.jpg","max_1200_webp/82a7e4253743243.6a7129f48c958.jpg","max_1200_webp/ee4eae253743243.6a7129f48e232.jpg","max_1200_webp/7cc532253743243.6a7129f48ba96.jpg","max_1200_webp/87cb2b253743243.6a7129f48b68c.jpg","max_1200_webp/311ace253743243.6a7129f48c5fb.jpg","max_1200_webp/7ffcc1253743243.6a7129f48d79b.jpg","max_1200_webp/a6d9fc253743243.6a7129f48db1f.jpg"]},
   {id:"248592649/Social-Media-x1fb-oficial",t:"Social media · X1FB Oficial",c:"176693248592649.69f4c2e13a5d0.jpg",i:["fs_webp/5852dd248592649.69f4c1a368d28.jpg","max_1200_webp/253606248592649.69f4c1a3696fe.jpg","max_1200_webp/d26382248592649.69f4c1a36c39a.jpg","max_1200_webp/4cbe94248592649.69f4c1a36924d.jpg","max_1200_webp/e177c7248592649.69f4c1a369b6a.jpg","max_1200_webp/6391a3248592649.69f4c1a36a5e5.jpg","max_1200_webp/5b8827248592649.69f4c1a36af30.jpg","max_1200_webp/534357248592649.69f4c1a36bb28.jpg","max_1200_webp/50dc5e248592649.69f4c1a36bf95.jpg","max_1200_webp/620a4d248592649.69f4c1a36aabe.jpg","max_1200_webp/39d567248592649.69f4c1a36b75a.jpg","max_1200_webp/f34db0248592649.69f4c1a36a00e.jpg","max_1200_webp/c36fec248592649.69f4c1a36b373.jpg","fs_webp/a3e044248592649.69f4c2e2212cb.jpg"]},
@@ -333,12 +336,14 @@ const PROJETOS=[
   {id:"187174781/Social-media-eletronicos",t:"Social media · Eletrônicos",c:"ddd657187174781.6582e7cae2c05.png",i:["max_1200_webp/c89ee9187174781.6582e7cb67333.jpg","fs_webp/40bbaf187174781.6582e7cb667b9.jpg"]},
   {id:"186620415/social-media-banco-digital",t:"Social media · Banco digital",c:"c5de91186620415.6578b24499ec0.png",i:["max_1200_webp/38f6c6186620415.6578b2452e2e9.jpg","max_1200_webp/43876e186620415.6578b2452f822.jpg","max_1200_webp/2adfc7186620415.6578b24531032.jpg","max_1200_webp/97ac71186620415.6578b2452eedd.jpg","max_1200_webp/555357186620415.6578b2453040a.jpg","max_1200_webp/22ac94186620415.6578b2452d705.jpg","max_1200_webp/cd7263186620415.6578b2452caf3.jpg"]},
   {id:"186253587/Social-media-pizzaria",t:"Social media · Pizzaria",c:"5e2fd3186253587.6571da60cea40.png",i:["max_1200_webp/d9ca18186253587.6571da62683ef.jpg","max_1200_webp/efbd56186253587.6571da626a4d9.jpg","max_1200_webp/32f4da186253587.6571da626bb22.jpg","max_1200_webp/5ac4de186253587.6571da6269860.jpg","max_1200_webp/e72178186253587.6571da626af0a.jpg"]},
-  {id:"186196195/Social-media-academia",t:"Social media · Academia",c:"ce3f7c186196195.6570dea571fb7.png",i:["max_1200_webp/a5b2f9186196195.6570dea5e843f.jpg","max_1200_webp/499557186196195.6570dea5ea9af.jpg","max_1200_webp/73558c186196195.6570dea5e9d48.jpg","max_1200_webp/25e2e8186196195.6570dea5e8fbd.jpg","max_1200_webp/94729f186196195.6570dea5ebdc2.jpg","max_1200_webp/ba477a186196195.6570dea5eb3c0.jpg"]}
+  {id:"186196195/Social-media-academia",t:"Social media · Academia",c:"ce3f7c186196195.6570dea571fb7.png",i:["max_1200_webp/a5b2f9186196195.6570dea5e843f.jpg","max_1200_webp/499557186196195.6570dea5ea9af.jpg","max_1200_webp/73558c186196195.6570dea5e9d48.jpg","max_1200_webp/25e2e8186196195.6570dea5e8fbd.jpg","max_1200_webp/94729f186196195.6570dea5ebdc2.jpg","max_1200_webp/ba477a186196195.6570dea5eb3c0.jpg"]},
+  {id:"186101855/Social-media-contabilidade",t:"Social media · Contabilidade",c:"9dd76e186101855.6570deb730724.png",i:["max_1200_webp/a2ac81186101855.656f6c1655de0.jpg","max_1200_webp/e3cc9f186101855.656f6c165242b.jpg","max_1200_webp/a3b502186101855.656f6c1656aa7.jpg","max_1200_webp/46f93a186101855.656f6c1654a70.jpg","max_1200_webp/26db1d186101855.656f6c1653d3f.jpg","max_1200_webp/1d6a1c186101855.656f6c1652f52.jpg","max_1200_webp/0187c2186101855.656f6c1655483.jpg"]}
 ];
+function rotulo(p){const v=p.i.filter(x=>x.startsWith('v:')).length,a=p.i.length-v;return [a?a+(a>1?' artes':' arte'):'',v?v+(v>1?' vídeos':' vídeo'):''].filter(Boolean).join(' · ')}
 const pg=document.getElementById('projects');
 PROJETOS.forEach((p,n)=>{
   const b=document.createElement('button');b.className='proj reveal';b.dataset.proj=n;b.style.transitionDelay=(n%3)*70+'ms';
-  b.innerHTML='<div class="cover"><img loading="lazy" decoding="async" alt="" src="'+BC+p.c+'"><span class="count">'+p.i.length+(p.i.length>1?' artes':' arte')+'</span></div><b></b>';
+  b.innerHTML='<div class="cover"><img loading="lazy" decoding="async" alt="" src="'+BC+p.c+'"><span class="count">'+rotulo(p)+'</span></div><b></b>';
   b.querySelector('b').textContent=p.t;pg.appendChild(b);
 });
 let sheet=null;
@@ -348,7 +353,9 @@ function openProj(n){
   sheet.innerHTML='<div class="sheetBar"><h3></h3><button aria-label="Fechar projeto">✕</button></div><div class="sheetBody"></div>';
   sheet.querySelector('h3').textContent=p.t;
   const body=sheet.querySelector('.sheetBody');
-  p.i.forEach((src,k)=>{const im=document.createElement('img');im.src=BM+src;im.alt=p.t+', arte '+(k+1);im.loading=k<2?'eager':'lazy';im.decoding='async';body.appendChild(im);});
+  p.i.forEach((src,k)=>{
+    if(src.startsWith('v:')){const w=document.createElement('div');w.className='sheetVid';const f=document.createElement('iframe');f.src='https://www-ccv.adobe.io/v1/player/ccv/'+src.slice(2)+'/embed?bgcolor=%231E1E22&api_key=behance1';f.title=p.t+', vídeo';f.loading='lazy';f.allow='autoplay; fullscreen; picture-in-picture';f.allowFullscreen=true;w.appendChild(f);body.appendChild(w);return;}
+    const im=document.createElement('img');im.src=BM+src;im.alt=p.t+', arte '+(k+1);im.loading=k<2?'eager':'lazy';im.decoding='async';body.appendChild(im);});
   const a=document.createElement('a');a.className='behance';a.href=BH+p.id;a.target='_blank';a.rel='noopener';a.innerHTML='<div><b>ver no Behance</b><small>Abrir este projeto no Behance</small></div><span class="arrow">↗</span>';body.appendChild(a);
   sheet.querySelector('button').onclick=closeProj;
   document.body.appendChild(sheet);document.body.style.overflow='hidden';
