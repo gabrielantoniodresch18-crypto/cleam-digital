@@ -63,11 +63,6 @@ a{color:inherit}
 @keyframes up{to{transform:none}}
 @keyframes fadein{to{opacity:1}}
 
-/* Faixa animada */
-.strip{margin-top:4px;border-block:1px solid var(--line);overflow:hidden;white-space:nowrap}
-.strip div{display:inline-flex;gap:28px;padding-block:12px;animation:marquee 22s linear infinite;font-family:var(--display);font-size:22px;text-transform:uppercase;letter-spacing:.02em}
-.strip i{font-style:normal;color:var(--accent)}
-@keyframes marquee{to{transform:translateX(-50%)}}
 
 /* Abas */
 .tabs{position:fixed;left:0;right:0;bottom:0;z-index:30;display:grid;grid-template-columns:repeat(5,1fr);gap:2px;padding:6px 6px calc(6px + env(safe-area-inset-bottom,0px));background:rgba(0,0,0,.88);backdrop-filter:blur(16px);-webkit-backdrop-filter:blur(16px);border-top:1px solid var(--line)}
@@ -235,7 +230,6 @@ footer{color:var(--muted);font-size:12.5px;text-align:center;margin-top:40px}
 
 @media (prefers-reduced-motion:reduce){
   *,*::before,*::after{animation-duration:.01ms!important;animation-iteration-count:1!important;transition-duration:.01ms!important}
-  .strip div{animation:none}
 }
 </style>
 </head>
@@ -256,10 +250,6 @@ footer{color:var(--muted);font-size:12.5px;text-align:center;margin-top:40px}
  </div>
 </header>
 
-<div class="strip" aria-hidden="true"><div>
-  <span>Social media</span><i>✦</i><span>Audiovisual</span><i>✦</i><span>Design gráfico</span><i>✦</i><span>Gestão de redes</span><i>✦</i>
-  <span>Social media</span><i>✦</i><span>Audiovisual</span><i>✦</i><span>Design gráfico</span><i>✦</i><span>Gestão de redes</span><i>✦</i>
-</div></div>
 
 <div class="wrap">
   <nav class="tabs" role="tablist" aria-label="Seções">
